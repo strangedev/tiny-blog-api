@@ -1,0 +1,9 @@
+{
+  "name": "tiny-blog-api",
+  "version": "0.1.0",
+  "description": "Api client for tiny-blog",
+  "main": "noentry",
+  "repository": "git@github.com:strangedev/tiny-blog-api.git",
+  "author": "Noah Hummel <hummel@marvelous.systems>",
+  "license": "Apache 2.0"
+}
