@@ -1,0 +1,111 @@
+swagger: "2.0"
+info:
+  description: "Public backend for tiny-blog"
+  version: "0.1.0"
+  title: "tiny-blog public"
+  contact:
+    email: "admin@marvelous.systems"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "tinyblog.marvelous.systems"
+basePath: "/v1alpha"
+tags:
+- name: "BlogEntry"
+  description: "Serves BlogEntries"
+schemes:
+- "https"
+paths:
+  /BlogEntry/byTag:
+    get:
+      tags:
+      - "BlogEntry"
+      summary: "Fetch BlogEntries"
+      description: "Fetches BlogEntries relevant to the given tags, ordered by relevance."
+      operationId: "getBlogEntriesByTag"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "tags"
+        description: ""
+        required: true
+        schema:
+          type: "array"
+          items:
+            type: "string"
+      - in: "query"
+        name: "offset"
+        description: "Pagination offset, defaults to 0"
+        required: false
+        type: "integer"
+      - in: "query"
+        name: "limit"
+        description: "Pagination limit, defaults to 50"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/BlogEntry"
+        400:
+          description: "Bad request"
+  /BlogEntry/newest:
+    get:
+      tags:
+      - "BlogEntry"
+      summary: "Fetch BlogEntries"
+      description: "Fetches all BlogEntries sorted by date, newest first."
+      operationId: "getBlogEntriesByNewest"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "offset"
+        description: "Pagination offset, defaults to 0"
+        required: false
+        type: "integer"
+      - in: "query"
+        name: "limit"
+        description: "Pagination limit, defaults to 50"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/BlogEntry"
+        400:
+          description: "Bad request"
+  /Tag: {}
+securityDefinitions: {}
+definitions:
+  BlogEntry:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      title:
+        type: "string"
+      content:
+        type: "string"
+      source:
+        type: "string"
+      author:
+        type: "string"
+      date:
+        type: "string"
+      tags:
+        type: "array"
+        items:
+          type: "string"
