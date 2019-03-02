@@ -1,4 +1,4 @@
-import callApi from "../common";
+import {callApi} from "../util/request";
 import BlogEntry from "../../tiny-blog-model/v1alpha/BlogEntry";
 
 const baseUrl = "localhost:8082";
