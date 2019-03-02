@@ -1,0 +1,3 @@
+[submodule "tiny-blog-model"]
+	path = tiny-blog-model
+	url = https://github.com/strangedev/tiny-blog-model
