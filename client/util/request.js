@@ -1,6 +1,6 @@
 import * as Future from "fluture";
 import * as R from "ramda";
-import * as fetch from "node-fetch"
+import * as fetch from "@brillout/fetch";
 
 function buildUrl(host, path, {ssl=false, port=80, query=null, auth=null}) {
     if (!R.isNil(auth)) {
