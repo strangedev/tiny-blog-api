@@ -1,13 +1,10 @@
 import * as Future from "fluture";
 import * as R from "ramda";
-import * as fetch from "@brillout/fetch";
+import fetch from "cross-fetch";
 
 function buildUrl(host, path, {ssl=false, port=80, query=null, auth=null}) {
     if (!R.isNil(auth)) {
         auth = null;  // auth not implemented yet
-    }
-    if (R.isNil(query)) {
-        return path;
     }
     let proto = "http://";
     if (ssl) {
@@ -17,6 +14,9 @@ function buildUrl(host, path, {ssl=false, port=80, query=null, auth=null}) {
         }
     }
     let url = `${proto}${host}:${port}${path}`;
+    if (R.isNil(query)) {
+        return path;
+    }
     return encodeURI(
         R.reduce(
             (a, b) => a + b,

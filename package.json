@@ -1,13 +1,13 @@
 {
   "name": "tiny-blog-api",
-  "version": "0.1.3",
+  "version": "0.1.8",
   "description": "Api client for tiny-blog",
   "main": "build/index.js",
   "repository": "git@github.com:strangedev/tiny-blog-api.git",
   "author": "Noah Hummel <hummel@marvelous.systems>",
   "license": "Apache 2.0",
   "dependencies": {
-    "@brillout/fetch": "^0.1.2",
+    "cross-fetch": "^3.0.1",
     "fluture": "^10.3.1",
     "ramda": "^0.26.1",
     "tiny-blog-model": "^0.1.2"
