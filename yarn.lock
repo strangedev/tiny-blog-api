@@ -1527,6 +1527,11 @@ needle@^2.2.1:
     iconv-lite "^0.4.4"
     sax "^1.2.4"
 
+node-fetch@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
+  integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
+
 node-pre-gyp@^0.10.0:
   version "0.10.3"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.10.3.tgz#3070040716afdc778747b61b6887bf78880b80fc"
@@ -2056,9 +2061,9 @@ tar@^4:
     yallist "^3.0.2"
 
 tiny-blog-model@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/tiny-blog-model/-/tiny-blog-model-0.1.2.tgz#898c4f4416410fb6f653607efa306e86b3125927"
-  integrity sha512-NwMPbIkknVceJ+HlMaLIi5/NxHzyJ/tPgAsndGTKN9RpmCSyRno2qaQ5N7A162qICyW6KWpE7a/mbD2RRANT4w==
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/tiny-blog-model/-/tiny-blog-model-0.1.5.tgz#d82eb9fe740e3cea2a84ac3b87f2602c9fe9456e"
+  integrity sha512-kycjqY7QVTvMsSwo1K7v/C78oTbW69jZPFgVoOV7QbODwigZNbTyFl++asOI8AzJ8RGro/HwR6Q2Rktkmb/BYA==
   dependencies:
     fluture "^10.3.1"
     mongodb "^3.1.13"

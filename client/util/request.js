@@ -1,17 +1,26 @@
 import * as Future from "fluture";
 import * as R from "ramda";
+import * as fetch from "node-fetch"
 
-function buildUrl(baseUrl, path, {query=null, auth=null}) {
+function buildUrl(host, path, {ssl=false, port=80, query=null, auth=null}) {
     if (!R.isNil(auth)) {
         auth = null;  // auth not implemented yet
     }
     if (R.isNil(query)) {
         return path;
     }
+    let proto = "http://";
+    if (ssl) {
+        proto = "https://";
+        if (port === 80) {
+            port = 443;
+        }
+    }
+    let url = `${proto}${host}:${port}${path}`;
     return encodeURI(
         R.reduce(
             (a, b) => a + b,
-            `${baseUrl}${path}?`,
+            `${url}?`,
             R.intersperse(
                 "&",
                 R.map((key, value) => `${key}=${value}`)
@@ -20,30 +29,24 @@ function buildUrl(baseUrl, path, {query=null, auth=null}) {
     )
 }
 
-function callApi(baseUrl, path, method, {query=null, body=null, auth=null}) {
-    return Future.Future((reject, resolve) => {
-        const abortController = new AbortController();
-        const signal = abortController.signal;
+function callApi(host, path, method, {ssl=false, port=80, query=null, body=null, auth=null}) {
+    let url = buildUrl(host, path, {ssl, port, query, auth});
 
-        let url = buildUrl(baseUrl, path, {query, auth});
+    let options = {
+        method
+    };
+    if (!R.isNil(body)) {
+        options.body = body;
+    }
 
-        fetch(url, {
-            method,
-            body: JSON.stringify(body),
-            signal
-        })
-            .then(resolve)
-            .catch(reject);
-
-        return abortController.abort;
-    }).chain(handleApiError);
+    return Future.tryP(() => fetch(url, options)).chain(handleApiError);
 }
 
 function handleApiError(response) {
     if (!response.ok) {
         return Future.reject(`${response.status} ${response.statusText}`);
     }
-    return Future.of(JSON.parse(response.body));
+    return Future.tryP(() => response.json());
 }
 
 export {

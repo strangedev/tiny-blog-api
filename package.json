@@ -2,12 +2,13 @@
   "name": "tiny-blog-api",
   "version": "0.1.0",
   "description": "Api client for tiny-blog",
-  "main": "noentry",
+  "main": "build/client/index.js",
   "repository": "git@github.com:strangedev/tiny-blog-api.git",
   "author": "Noah Hummel <hummel@marvelous.systems>",
   "license": "Apache 2.0",
   "dependencies": {
     "fluture": "^10.3.1",
+    "node-fetch": "^2.3.0",
     "ramda": "^0.26.1",
     "tiny-blog-model": "^0.1.2"
   },

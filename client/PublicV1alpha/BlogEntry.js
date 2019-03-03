@@ -1,24 +1,39 @@
 import {callApi} from "../util/request";
 import {v1alpha} from "tiny-blog-model";
+import * as R from "ramda";
 
-const baseUrl = "localhost:3000";
-
-function getBlogEntriesByTag(tags, offset, limit) {
-    return callApi(baseUrl, "/entries/byTag", "GET", {
-        query: {offset, limit},
-        body: tags
-    })
-        .map(v1alpha.model.BlogEntry.unMarshal);
+function byTag(host, port, ssl=false){
+    return (tags, offset, limit) =>
+        callApi(host, "/BlogEntry/byTag", "GET", {
+            query: {offset, limit},
+            body: tags,
+            port,
+            ssl
+        }).map(
+            entries => R.map(
+                v1alpha.model.BlogEntry.unMarshal,
+                entries
+            )
+        );
 }
 
-function getBlogEntriesByNewest(offset, limit) {
-    return callApi(baseUrl, "/entries/newest", "GET", {
-        query: {offset, limit}
-    })
-        .map(v1alpha.model.BlogEntry.unMarshal);
+function newest(host, port, ssl=false){
+    return (offset, limit) => {
+        return callApi(host, "/BlogEntry/newest", "GET", {
+            query: {offset, limit},
+            port,
+            ssl
+        })
+            .map(
+                entries => R.map(
+                    v1alpha.model.BlogEntry.unMarshal,
+                    entries
+                )
+            );
+    }
 }
 
 export {
-    getBlogEntriesByNewest,
-    getBlogEntriesByTag
+    byTag,
+    newest
 };
