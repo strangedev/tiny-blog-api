@@ -11,7 +11,7 @@ function byTag(host, port, ssl=false){
             ssl
         }).map(
             entries => R.map(
-                v1alpha.model.BlogEntry.unMarshal,
+                v1alpha.BlogEntry.unMarshal,
                 entries
             )
         );
@@ -26,7 +26,7 @@ function newest(host, port, ssl=false){
         })
             .map(
                 entries => R.map(
-                    v1alpha.model.BlogEntry.unMarshal,
+                    v1alpha.BlogEntry.unMarshal,
                     entries
                 )
             );

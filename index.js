@@ -4,7 +4,7 @@ import * as PublicV1alphaTag from "./client/PublicV1alpha/Tag";
 
 const PublicV1alpha = {
     model: {
-        BlogEntry: Model.v1alpha.model.BlogEntry
+        BlogEntry: Model.v1alpha.BlogEntry
     },
     client: (host, port, ssl=false) => ({
         BlogEntry: {
