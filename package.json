@@ -8,6 +8,7 @@
   "license": "Apache 2.0",
   "dependencies": {
     "fluture": "^10.3.1",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "tiny-blog-model": "^0.1.2"
   }
 }

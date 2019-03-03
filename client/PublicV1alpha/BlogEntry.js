@@ -1,21 +1,21 @@
 import {callApi} from "../util/request";
-import BlogEntry from "../../tiny-blog-model/v1alpha/BlogEntry";
+import {v1alpha} from "tiny-blog-model";
 
-const baseUrl = "localhost:8082";
+const baseUrl = "localhost:3000";
 
 function getBlogEntriesByTag(tags, offset, limit) {
     return callApi(baseUrl, "/entries/byTag", "GET", {
         query: {offset, limit},
         body: tags
     })
-        .map(BlogEntry.unMarshal);
+        .map(v1alpha.model.BlogEntry.unMarshal);
 }
 
 function getBlogEntriesByNewest(offset, limit) {
     return callApi(baseUrl, "/entries/newest", "GET", {
         query: {offset, limit}
     })
-        .map(BlogEntry.unMarshal);
+        .map(v1alpha.model.BlogEntry.unMarshal);
 }
 
 export {
