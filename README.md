@@ -22,11 +22,7 @@ let cancel = client.BlogEntry.view.newest().fork(
     console.log  // type [PublicV1Alpha.model.BlogEntry]
 );
 
-cancel = PublicV1alpha.client(
-    backend.host,
-    backend.port,
-    backend.ssl
-).Tag.view.all().fork(
+cancel = client.Tag.view.all().fork(
     console.error,
     console.log  // type [String]
 );
