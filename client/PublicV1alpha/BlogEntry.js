@@ -1,5 +1,5 @@
 import {callApi} from "../util/request";
-import {v1alpha} from "tiny-blog-model";
+import {BlogEntry} from "tiny-blog-model";
 import * as R from "ramda";
 
 function byTag(host, port, ssl=false){
@@ -11,7 +11,7 @@ function byTag(host, port, ssl=false){
             ssl
         }).map(
             entries => R.map(
-                v1alpha.BlogEntry.unMarshal,
+                BlogEntry.unMarshal,
                 entries
             )
         );
@@ -23,10 +23,9 @@ function newest(host, port, ssl=false){
             query: {offset, limit},
             port,
             ssl
-        })
-            .map(
+        }).map(
                 entries => R.map(
-                    v1alpha.BlogEntry.unMarshal,
+                    BlogEntry.unMarshal,
                     entries
                 )
             );
