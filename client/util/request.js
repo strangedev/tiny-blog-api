@@ -15,7 +15,7 @@ function buildUrl(host, path, {ssl=false, port=80, query=null, auth=null}) {
     }
     let url = `${proto}${host}:${port}${path}`;
     if (R.isNil(query)) {
-        return path;
+        return url;
     }
     return encodeURI(
         R.reduce(
