@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
-  description: "Public backend for tiny-blog"
-  version: "0.1.0"
-  title: "tiny-blog public"
+  description: "Public API for tiny-blog"
+  version: "0.1.1"
+  title: "tiny-blog-api/Public"
   contact:
     email: "admin@marvelous.systems"
   license:
@@ -22,7 +22,7 @@ paths:
       - "BlogEntry"
       summary: "Fetch BlogEntries"
       description: "Fetches BlogEntries relevant to the given tags, ordered by relevance."
-      operationId: "getBlogEntriesByTag"
+      operationId: "BlogEntry.view.byTag"
       consumes:
       - "application/json"
       produces:
@@ -61,7 +61,7 @@ paths:
       - "BlogEntry"
       summary: "Fetch BlogEntries"
       description: "Fetches all BlogEntries sorted by date, newest first."
-      operationId: "getBlogEntriesByNewest"
+      operationId: "BlogEntry.view.newest"
       consumes:
       - "application/json"
       produces:
@@ -86,8 +86,23 @@ paths:
               $ref: "#/definitions/BlogEntry"
         400:
           description: "Bad request"
-  /Tag: {}
-securityDefinitions: {}
+  /Tag:
+    get:
+      tags:
+      - "Tag"
+      summary: "Fetch Tags"
+      description: "Fetches all Tags"
+      operationId: "Tag.view.all"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              type: "string"
+
 definitions:
   BlogEntry:
     type: "object"
