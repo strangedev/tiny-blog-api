@@ -6,7 +6,9 @@ function byTag(host, port, ssl=false){
     return (tags, offset, limit) =>
         callApi(host, "/BlogEntry/byTag", "GET", {
             query: {offset, limit},
-            body: tags,
+            body: {
+                tags
+            },
             port,
             ssl
         }).map(

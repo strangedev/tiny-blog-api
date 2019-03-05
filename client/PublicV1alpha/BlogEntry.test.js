@@ -52,3 +52,30 @@ test("BlogEntry.newest", () => {
     );
     return expect(future.promise()).resolves.toEqual([global.aBlogEntry]);
 });
+
+test("BlogEntry.byTag", () => {
+    let limit = 0;
+    let offset = 50;
+    let future = global.byTagFn(global.tags, offset, limit).chain(
+        newest => {
+            expect(callApi).toHaveBeenCalledWith(
+                global.host,
+                "/BlogEntry/byTag",
+                "GET",
+                {
+                    query: {
+                        offset,
+                        limit
+                    },
+                    body: {
+                        tags: global.tags
+                    },
+                    port: global.port,
+                    ssl: false
+                }
+            );
+            return Future.of(newest)
+        }
+    );
+    return expect(future.promise()).resolves.toEqual([global.aBlogEntry]);
+});
