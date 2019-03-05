@@ -2,7 +2,7 @@
 
 Api spec and JS client for tiny-blog
 
-![npm](https://img.shields.io/npm/v/tiny-blog-api.svg)
+[![npm](https://img.shields.io/npm/v/tiny-blog-api.svg)](https://www.npmjs.com/package/tiny-blog-api)
 
 ### Related repos
 
