@@ -13,20 +13,13 @@ function buildUrl(host, path, {ssl=false, port=80, query=null, auth=null}) {
             port = 443;
         }
     }
-    let url = `${proto}${host}:${port}${path}`;
-    if (R.isNil(query)) {
-        return url;
-    }
-    return encodeURI(
-        R.reduce(
-            (a, b) => a + b,
-            `${url}?`,
-            R.intersperse(
-                "&",
-                R.map((key, value) => `${key}=${value}`)
-            )
+    let url = new URL(`${proto}${host}:${port}${path}`);
+    if (!R.isNil(query)) {
+        Object.keys(query).forEach(
+            key => url.searchParams.append(key, query[key])
         )
-    )
+    }
+    return url;
 }
 
 function callApi(host, path, method, {ssl=false, port=80, query=null, body=null, auth=null}) {

@@ -13,7 +13,7 @@
     "tiny-blog-model": "^0.1.2"
   },
   "scripts": {
-    "build": "yarn clean && babel . -d build --ignore node_modules",
+    "build": "yarn clean && babel . -d build --ignore node_modules --ignore '*/**/*.test.js'",
     "clean": "rm -rf build",
     "test": "jest",
     "codecov": "jest && codecov"
