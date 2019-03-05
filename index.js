@@ -1,6 +1,6 @@
 import * as Model from "tiny-blog-model"
-import * as PublicBlogEntry from "./client/PublicV1alpha/BlogEntry";
-import * as PublicTag from "./client/PublicV1alpha/Tag";
+import * as PublicBlogEntry from "./client/Public/BlogEntry";
+import * as PublicTag from "./client/Public/Tag";
 
 const Public = {
     model: {
