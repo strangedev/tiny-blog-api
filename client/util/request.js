@@ -44,5 +44,6 @@ function handleApiError(response) {
 
 export {
     callApi,
-    buildUrl
+    buildUrl,
+    handleApiError
 };
