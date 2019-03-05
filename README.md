@@ -1,5 +1,14 @@
 # tiny-blog-api
+
 Api spec and JS client for tiny-blog
+
+### Related repos
+
+ - tiny-blog: https://github.com/strangedev/tiny-blog 
+ - tiny-blog-api: https://github.com/strangedev/tiny-blog-api
+ - tiny-blog-backend: https://github.com/strangedev/tiny-blog-backend
+ - tiny-blog-ui: https://github.com/strangedev/tiny-blog-ui
+ - tiny-blog-model: https://github.com/strangedev/tiny-blog-model
 
 ### Usage
 
