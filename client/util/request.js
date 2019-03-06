@@ -26,10 +26,13 @@ function callApi(host, path, method, {ssl=false, port=80, query=null, body=null,
     let url = buildUrl(host, path, {ssl, port, query, auth});
 
     let options = {
-        method
+        method,
+        headers: {
+            "Content-Type": "application/json"
+        },
     };
     if (!R.isNil(body)) {
-        options.body = body;
+        options.body = JSON.stringify(body);
     }
 
     return Future.tryP(() => fetch(url, options)).chain(handleApiError);
