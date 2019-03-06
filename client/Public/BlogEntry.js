@@ -4,7 +4,7 @@ import * as R from "ramda";
 
 function byTag(host, port, ssl=false){
     return (tags, offset, limit) =>
-        callApi(host, "/BlogEntry/byTag", "GET", {
+        callApi(host, "/BlogEntry/byTag", "POST", {
             query: {offset, limit},
             body: {
                 tags

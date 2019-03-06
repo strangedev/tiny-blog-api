@@ -61,7 +61,7 @@ test("BlogEntry.byTag", () => {
             expect(callApi).toHaveBeenCalledWith(
                 global.host,
                 "/BlogEntry/byTag",
-                "GET",
+                "POST",
                 {
                     query: {
                         offset,
